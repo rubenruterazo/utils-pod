@@ -6,6 +6,6 @@ RUN apk update && \
   apk add curl && \
   apk add netcat-openbsd && \
   apk add busybox-extras && \
-  apk add openssh
+  apk add openssh && mkdir /.ssh && chmod 777 /.ssh
 EXPOSE 8080  
 ENTRYPOINT ["tail", "-f", "/dev/null"]
