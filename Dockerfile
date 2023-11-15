@@ -23,5 +23,7 @@ RUN apk --no-cache add libaio libnsl libc6-compat && \
     ln -s /lib64/ld-linux-x86-64.so.2 /usr/lib/ld-linux-x86-64.so.2
 
 ENV LD_LIBRARY_PATH /usr/lib/instantclient
+RUN cd /etc/apk/keys && wget https://raw.githubusercontent.com/jirutka/user-aports/master/.keys/jakub@jirutka.cz-56d0d9fd.rsa.pub && \
+    echo https://repo.jirutka.cz/alpine/v3.18/user >> /etc/apk/repositories && apk update && apk add oracle-instantclient-sqlplus
 EXPOSE 8080  
 ENTRYPOINT ["tail", "-f", "/dev/null"]
